@@ -1,10 +1,13 @@
+/* Base styles */
 body {
   font-family: 'Segoe UI', sans-serif;
   margin: 0;
   color: #333;
   background-color: #f9f9f9;
+  scroll-behavior: smooth;
 }
 
+/* Header */
 header {
   display: flex;
   justify-content: space-between;
@@ -12,12 +15,20 @@ header {
   background: #004aad;
   color: white;
   padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
 nav a {
   color: white;
   margin: 0 1rem;
   text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: #ff9900;
 }
 
 .btn {
@@ -26,19 +37,39 @@ nav a {
   padding: 0.5rem 1rem;
   border-radius: 5px;
   text-decoration: none;
+  transition: background 0.3s ease, transform 0.3s ease;
 }
 
+.btn:hover {
+  background: #e68a00;
+  transform: scale(1.05);
+}
+
+/* Hero section */
 .hero {
   display: flex;
   align-items: center;
   padding: 2rem;
   background: white;
+  animation: fadeIn 1.5s ease;
 }
 
 .hero img {
   width: 200px;
   border-radius: 50%;
   margin-right: 2rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease;
+}
+
+.hero img:hover {
+  transform: scale(1.1);
+}
+
+/* Sections */
+section {
+  padding: 2rem;
+  animation: fadeInUp 1s ease;
 }
 
 .skills-grid, .project-grid {
@@ -48,9 +79,34 @@ nav a {
   padding: 1rem;
 }
 
+.skills-grid div, .project {
+  background: white;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.skills-grid div:hover, .project:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+}
+
+/* Footer */
 footer {
   background: #004aad;
   color: white;
   text-align: center;
   padding: 1rem;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
